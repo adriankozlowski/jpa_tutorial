@@ -1,6 +1,7 @@
 package pl.sda.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,12 +11,24 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "document")
+    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
     private Set<Sell> sells;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    /**
+     * Dodaje sprzedaze do kolekcji pojedynczo.
+     *
+     * @param sell
+     */
+    public void addSell(Sell sell) {
+        if (sells == null) {
+            sells = new HashSet<Sell>();
+        }
+        sells.add(sell);
+    }
 
     public Integer getId() {
         return id;
