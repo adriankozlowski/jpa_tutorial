@@ -1,33 +1,28 @@
 package pl.sda.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Set;
 
 @Entity
-public class Person {
+public class Person extends Customer {
+    @Column
+    private String pesel;
+    @Column
+    private String lastName;
 
-    @GeneratedValue
-    @Id
-    private Integer id;
-    @OneToMany(mappedBy = "person")
-    private Set<Address> addreses;
-
-    public Integer getId() {
-        return id;
+    public String getPesel() {
+        return pesel;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
-    public Set<Address> getAddreses() {
-        return addreses;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAddreses(Set<Address> addreses) {
-        this.addreses = addreses;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
