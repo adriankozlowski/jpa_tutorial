@@ -10,7 +10,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "document")
     private Set<Sell> sells;
 
     @ManyToOne

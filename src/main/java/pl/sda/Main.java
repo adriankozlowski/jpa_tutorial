@@ -11,6 +11,7 @@ public class Main {
         EntityManager entityManager = emf.createEntityManager();
 
 //        entityManager.getTransaction().begin();
+//        entityManager.persist(null);
 //        entityManager.getTransaction().commit();
 
         entityManager.close();
